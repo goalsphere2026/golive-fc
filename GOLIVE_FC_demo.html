@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOLIVE FC | كرة القدم</title>
+<style>
+:root{--bg:#07111f;--panel:#101d30;--muted:#9fb0c8;--accent:#31d17c;--white:#f5f7fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Tahoma,sans-serif}
+header{padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#0a1728;position:sticky;top:0;z-index:5;border-bottom:1px solid #20314a}
+.logo{font-weight:900;font-size:25px;letter-spacing:1px}.logo span{color:var(--accent)}
+nav{display:flex;gap:8px;flex-wrap:wrap}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:#20314a;color:white;font-weight:700}nav button.active, .cta{background:var(--accent);color:#052115}
+.search{padding:11px 15px;border-radius:12px;background:#15243a;border:1px solid #293b55;color:white;width:100%;max-width:360px}
+main{max-width:1200px;margin:auto;padding:24px 5%}.hero{background:linear-gradient(120deg,#143b35,#102544 70%);padding:28px;border-radius:22px;margin-bottom:22px}.hero h1{font-size:clamp(26px,4vw,42px);margin:0 0 12px}.hero p{color:#c9d7e7;max-width:700px;line-height:1.8}
+.section{display:none}.section.active{display:block}.heading{display:flex;justify-content:space-between;align-items:center;margin:24px 0 14px}.heading h2{margin:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--panel);padding:18px;border:1px solid #20314a;border-radius:16px}.muted{color:var(--muted)}.tag{color:var(--accent);font-size:13px;font-weight:700}
+.match{display:flex;justify-content:space-between;align-items:center;gap:10px}.teams{display:flex;align-items:center;gap:12px;font-weight:700}.score{font-size:22px;font-weight:900}.line{height:1px;background:#253751;margin:15px 0}
+.big{font-size:32px;font-weight:900;color:var(--accent)}footer{text-align:center;color:var(--muted);padding:30px;border-top:1px solid #1c2b40;margin-top:40px}
+@media(max-width:760px){header{flex-direction:column;align-items:stretch}nav{justify-content:center}.search{max-width:none}.hero{padding:22px}}
+</style>
+</head>
+<body>
+<header><div class="logo">GOLIVE <span>FC</span></div><nav id="nav">
+<button class="active" data-page="home">الرئيسية</button><button data-page="matches">المباريات</button><button data-page="clubs">الأندية</button><button data-page="players">اللاعبون</button><button data-page="stats">الإحصائيات</button>
+</nav><input id="search" class="search" placeholder="ابحث عن فريق أو لاعب أو مباراة..."></header>
+<main>
+<section id="home" class="section active">
+<div class="hero"><div class="tag">عالم كرة القدم في مكان واحد</div><h1>تابع كرة القدم مع <span style="color:var(--accent)">GOLIVE FC</span></h1><p>الأخبار، النتائج، المباريات، الأندية، اللاعبين والإحصائيات — تجربة كرة قدم عربية واضحة وسريعة.</p><button class="cta" data-jump="matches">عرض المباريات</button></div>
+<div class="heading"><h2>مباريات مختارة</h2><span class="muted">نموذج تجريبي</span></div><div class="grid" id="homeMatches"></div>
+<div class="heading"><h2>اكتشف الموقع</h2></div><div class="grid"><div class="card"><div class="big">⚽</div><h3>المباريات</h3><p class="muted">النتائج والمواعيد.</p></div><div class="card"><div class="big">🏆</div><h3>الأندية</h3><p class="muted">معلومات عن الفرق.</p></div><div class="card"><div class="big">📊</div><h3>الإحصائيات</h3><p class="muted">أرقام اللاعبين والبطولات.</p></div></div>
+</section>
+<section id="matches" class="section"><div class="heading"><h2>المباريات</h2><span class="muted">بيانات تجريبية</span></div><div class="grid" id="matchList"></div></section>
+<section id="clubs" class="section"><div class="heading"><h2>الأندية</h2></div><div class="grid" id="clubList"></div></section>
+<section id="players" class="section"><div class="heading"><h2>اللاعبون</h2></div><div class="grid" id="playerList"></div></section>
+<section id="stats" class="section"><div class="heading"><h2>إحصائيات</h2></div><div class="grid"><div class="card"><div class="tag">هدافون (بيانات مثال)</div><h3>محمد صلاح</h3><div class="big">30</div><p class="muted">هدف — مثال توضيحي</p></div><div class="card"><div class="tag">صناعة أهداف (بيانات مثال)</div><h3>كيفن دي بروين</h3><div class="big">16</div><p class="muted">تمريرة حاسمة — مثال</p></div><div class="card"><div class="tag">كأس العالم</div><h3>الأكثر تتويجاً</h3><div class="big">5</div><p class="muted">البرازيل — ألقاب</p></div></div></section>
+</main><footer>GOLIVE FC · النسخة التجريبية · البيانات هنا توضيحية وليست مباشرة</footer>
+<script>
+const matches=[["ريال مدريد","برشلونة","— : —","الدوري الإسباني · موعد تجريبي"],["ليفربول","مانشستر سيتي","— : —","الدوري الإنجليزي · موعد تجريبي"],["بايرن ميونخ","بوروسيا دورتموند","— : —","الدوري الألماني · موعد تجريبي"],["باريس سان جيرمان","مارسيليا","— : —","الدوري الفرنسي · موعد تجريبي"],["إنتر ميلان","يوفنتوس","— : —","الدوري الإيطالي · موعد تجريبي"]];
+const clubs=["ريال مدريد","برشلونة","ليفربول","مانشستر سيتي","بايرن ميونخ","باريس سان جيرمان","إنتر ميلان","أرسنال","يوفنتوس","بوروسيا دورتموند"];
+const players=["ليونيل ميسي","كريستيانو رونالدو","كيليان مبابي","إيرلينغ هالاند","محمد صلاح","جود بيلينغهام","فينيسيوس جونيور","لامين يامال"];
+function matchCard(m){return `<div class="card match-card"><div class="tag">${m[3]}</div><div class="match"><div class="teams"><span>${m[0]}</span><span>⚽</span></div><div class="score">${m[2]}</div><div class="teams"><span>⚽</span><span>${m[1]}</span></div></div><div class="line"></div><span class="muted">المعلومات ليست بيانات مباشرة</span></div>`}
+document.getElementById("matchList").innerHTML=matches.map(matchCard).join("");
+document.getElementById("homeMatches").innerHTML=matches.slice(0,3).map(matchCard).join("");
+document.getElementById("clubList").innerHTML=clubs.map((c,i)=>`<div class="card searchable"><div class="big">🏟️</div><h3>${c}</h3><div class="muted">معلومات الفريق · قسم تجريبي</div></div>`).join("");
+document.getElementById("playerList").innerHTML=players.map((p,i)=>`<div class="card searchable"><div class="big">👤</div><h3>${p}</h3><div class="muted">ملف اللاعب · قسم تجريبي</div></div>`).join("");
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.getElementById(b.dataset.page).classList.add("active")});
+document.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>document.querySelector('[data-page="'+b.dataset.jump+'"]').click());
+document.getElementById("search").addEventListener("input",e=>{let q=e.target.value.trim().toLowerCase();document.querySelectorAll(".match-card,.searchable").forEach(c=>c.style.display=c.innerText.toLowerCase().includes(q)?"":"none")});
+</script>
+</body></html>
